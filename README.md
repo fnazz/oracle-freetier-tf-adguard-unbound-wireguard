@@ -120,7 +120,7 @@ public_ip = [
 
 Modify your wireguard client configuring `AllowedIps` to `10.2.0.0/24` to only tunnel the web panel and DNS traffic.
 
-## Access PiHole Interface
+## Access Adguard Interface
 
 While connected to WireGuard, navigate to http://10.2.0.100/admin
 
