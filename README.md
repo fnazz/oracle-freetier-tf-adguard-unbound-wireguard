@@ -15,7 +15,12 @@ $ cd oracle-freetier-tf-adguard-unbound-wireguard
 
 ## Usage
 
+- Generate api keys and ocids, refer to https://docs.oracle.com/en-us/iaas/Content/API/Concepts/apisigningkey.htm
+- update template.tfvars to the values derived from above.
+- ensure to choose the correct region and image id as they are specific to the region you plan to deploy.
+
 ```bash
+$ source template.tfvars
 $ terraform init
 $ # Fill in .tfvars file
 $ terraform plan
@@ -25,9 +30,9 @@ $ terraform apply
 - Compartment - "adguard"
 - buckets ADGUARD_BUCKET and ADGUARD_ARCHIVE_BUCKET
 - policies and dynamic groups to allow stream of log files from compute to ADGUARD_BUCKET based on auth_principal
-- Networking resources
+-  Networking resources, VCN/Subnet/etc
 - ubuntu OS
-- all required packages and post steps
+- Install all the all required packages and bring up docker services.
 
 #### docker-compose successful output:
 ```bash
