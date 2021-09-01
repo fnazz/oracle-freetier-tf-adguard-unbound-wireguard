@@ -2,7 +2,7 @@
 HOST=$(hostname -f)
 DATE=$(date +"%d%m%Y-%H%M%S")
 LOGFILE="/tmp/ag_ub_wg_${HOST}_${DATE}.log"
-
+ARCH=$(sudo dpkg --print-architecture)
 function os_actions() {
     # Prereqs and docker
     echo "starting os pre-requisites..." | tee -a $LOGFILE
@@ -18,9 +18,11 @@ function os_actions() {
 
     # Install Docker repository and keys
     curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+    # 
 
+    # 
     sudo add-apt-repository \
-        "deb [arch=amd64] https://download.docker.com/linux/ubuntu \
+        "deb [arch=${ARCH}] https://download.docker.com/linux/ubuntu \
             $(lsb_release -cs) \
             stable" &&
         echo "installing docker ..." | tee -a $LOGFILE
@@ -37,7 +39,7 @@ function os_actions() {
     echo "installing docker-compose ..." | tee -a $LOGFILE
     sudo curl -L "https://github.com/docker/compose/releases/download/1.29.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose &&
         sudo chmod +x /usr/local/bin/docker-compose &&
-        sudo ln -s /usr/local/bin/docker-compose /usr/bin/docker-compose
+        sudo ln -s -f /usr/local/bin/docker-compose /usr/bin/docker-compose
 # 
 }
 
