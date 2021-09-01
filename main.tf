@@ -197,6 +197,11 @@ resource "oci_core_instance" "adguard_instance" {
     hostname_label   = var.instance_display_name
   }
 
+  shape_config {
+        baseline_ocpu_utilization = "BASELINE_1_1"
+        ocpus = 4
+    }
+
   source_details {
     source_type = "image"
     source_id   = var.instance_image_ocid[var.region]
