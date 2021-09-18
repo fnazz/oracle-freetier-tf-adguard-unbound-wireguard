@@ -276,7 +276,6 @@ resource "null_resource" "adguard_configure" {
   
   provisioner "remote-exec" {
     inline = [
-      "unzip -o /home/ubuntu/docker-adguard-unbound-wireguard.zip -d /home/ubuntu/",
       "chmod uga+x /tmp/docker_ag_ub_wg_install.sh",
       "/bin/bash -x /tmp/docker_ag_ub_wg_install.sh"
     ]
