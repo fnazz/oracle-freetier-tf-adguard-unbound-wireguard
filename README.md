@@ -127,10 +127,9 @@ Modify your wireguard client configuring `AllowedIps` to `10.2.0.0/24` to only t
 
 ## Access Adguard Interface
 
-While connected to WireGuard, navigate to http://10.2.0.100/admin
+While connected to WireGuard, navigate to http://10.2.0.100:3000
 
-*The password (unless you set it in `docker-compose.yml`) is blank.*
-
+Perform the first time setup , once successful setup, login will looks like: 
 ![Adguard Admin Interface](https://i.imgur.com/LG1sQBi.png)
 
 ## Contributing
